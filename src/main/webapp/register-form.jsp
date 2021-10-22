@@ -7,6 +7,6 @@
 		<title>회원가입</title>
 	</head>
 	<body>
-        회원가입
+        회원가입-- 2
 	</body>
 </html>
