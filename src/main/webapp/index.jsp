@@ -1,3 +1,4 @@
+<%@page import="model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,33 +16,61 @@
 	   text-align: center;
 	}
 </style>
+<script type="text/javascript">
+    function logout(){
+        document.getElementById("logoutForm").submit();
+    }
+</script>
 </head>
 <body>
+<%
+    MemberVO vo = (MemberVO) session.getAttribute("mvo");
+%>
 	<div class="container pt-5">
 	   <h3>홈페이지</h3>
 	   <div class="card">
 		   <div class="card-header">
-		      <c:choose>
-		          <%-- 비로그인 상태인 경우--%>
-                  <c:when test="${sessionScope.vo == null}">
-                      <form class="form-inline" action="LoginController.do">
-                          <label for="id" class="mb-2 mr-sm-2">아이디:</label>
-                          <input type="text" class="form-control mb-2 mr-sm-2" id="id" placeholder="아이디" name="id">
-		                  <label for="password" class="mb-2 mr-sm-2">비밀번호:</label>
-	                      <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="비밀번호" name="password">
-                          <button type="submit" class="btn btn-info">로그인</button>
-	                  </form>
-                  </c:when>
-                  <%-- 로그인 했을경우 --%>
-	              <c:otherwise>
+		       <%-- 비로그인 상태인 경우 로그인 폼 제공 --%>
+		       <%
+		       if(vo == null) {
+		       %>
+               <form class="form-inline" action="LoginServlet">
+	               <label for="id" class="mb-2 mr-sm-2">아이디:</label>
+	               <input type="text" class="form-control mb-2 mr-sm-2" id="id" placeholder="아이디" name="id">
+	               <label for="password" class="mb-2 mr-sm-2">비밀번호:</label>
+	               <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="비밀번호" name="password">
+               <button type="submit" class="btn btn-info">로그인</button>
+	           </form>
+	           <%
+		        } else {
+		        %>
+                  <%-- 로그인 했을경우 로그아웃 버튼 제공--%>
 	                   ${sessionScope.vo.id} 님 안녕하세요
-	                   <form action="LogoutController.do" method="post" id="logoutForm"></form>  
+	                   <form action="LogoutServlet" method="post" id="logoutForm"></form>  
 	                   <a href="#" class="btn btn-danger" onclick="logout()">로그아웃</a>
-	              </c:otherwise>
-              </c:choose>
+	           <%
+		        }
+	           %>
 		   </div>
 	       <div class="card-body">
-		       
+		       <br>
+		       <br>
+		           Content-body
+	           <select class="selectpicker" data-size="5">
+	           <optgroup label="Picnic" disabled>
+			       <option>Mustard</option>
+			       <option>Ketchup</option>
+			       <option>Relish</option>
+		       </optgroup>
+		       <optgroup label="Camping">
+			      <option>Tent</option>
+			      <option>Flashlight</option>
+			      <option>Toilet Paper</option>
+		      </optgroup>
+               </select>
+		       <br>
+		       <br>
+		       <br>
 	       </div>
 		   <div class="card-footer align-center">
 			   <a href="member-register.jsp" class="btn btn-success">회원가입</a>
