@@ -78,8 +78,6 @@ public class MemberDAO {
     public void register(MemberVO vo) throws SQLException {
         
     }
-    
-    
     public boolean idCheck(String id) throws SQLException {
         boolean result = false;
         Connection con = null;
