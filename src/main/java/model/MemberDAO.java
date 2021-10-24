@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberDAO {
-	private static MemberDAO instance=new MemberDAO();
+    private static MemberDAO instance=new MemberDAO();
 	private String url="jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	private String username="scott";
 	private String userpass="tiger";
