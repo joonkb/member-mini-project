@@ -86,5 +86,8 @@
 			<%-- 로그아웃 --%>
 			<%-- 아이디, 비밀번호 찾기 버튼 --%>
 			<%-- 회원정보수정 --%>
+			<a href='update-form-conf.jsp' onclick="window.open('pw-check.jsp','mypopup','width=650,height=450,top=350,left=400'); return false;">
+			    회원정보수정
+			</a>
 </body>
 </html>

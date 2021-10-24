@@ -106,11 +106,34 @@ public class MemberDAO {
             StringBuilder sql = new StringBuilder("update mini_member set password=?, ");
             sql.append("email=?, name=?, address=?, birthday=? where id=?");
             pstmt = con.prepareStatement(sql.toString());
-            pstmt.setString(1, vo.getName());
+            pstmt.setString(1, vo.getPassword());
             pstmt.setString(2, vo.getEmail());
-            pstmt.executeQuery();
+            pstmt.setString(3, vo.getName());
+            pstmt.setString(4, vo.getAddress());
+            pstmt.setString(5, vo.getBirthday());
+            pstmt.setString(6, vo.getId());
+            pstmt.executeUpdate();
         } finally {
             closeAll(pstmt, con);
         }
+    }
+    public boolean pwCheck(String pw) throws SQLException {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt =  null;
+        ResultSet rs = null;
+        try {
+            con = DriverManager.getConnection(url, username, userpass);
+            String sql = "select count(*) from mini_member where password = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, pw);
+            rs = pstmt.executeQuery();
+            if(rs.next() && rs.getInt(1) == 1) {
+                result = true;
+            }
+        }finally {
+            closeAll(rs, pstmt, con);
+        }
+        return result;    
     }
 }
