@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MemberDAO {
-    private static MemberDAO instance=new MemberDAO();
+	private static MemberDAO instance=new MemberDAO();
 	private String url="jdbc:oracle:thin:@127.0.0.1:1521:xe";
 	private String username="scott";
 	private String userpass="tiger";
@@ -54,30 +54,31 @@ public class MemberDAO {
         return list;
     }
     public MemberVO login(String id, String password) throws SQLException {
-    	MemberVO vo = null;
-    	Connection con = null;
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	try {
-    		con = DriverManager.getConnection(url, username, password);
-    		String sql = "select * from mini_member where id = ? and password = ?";
-    		pstmt = con.prepareStatement(sql);
-    		pstmt.setString(1, id);
-    		pstmt.setString(2, password);
-    		rs = pstmt.executeQuery();
-    		if(rs.next()) {
-    			vo = new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3),
-    					rs.getString(4), rs.getString(5), rs.getString(6),
-    					rs.getString(7), rs.getInt(8), rs.getString(9));
-    		}
-    	} finally {
-    		closeAll(rs, pstmt, con);
-    	}
-    	return vo;
+        MemberVO vo = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = DriverManager.getConnection(url, username, password);
+            String sql = "select * from mini_member where id = ? and password = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, password);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                vo = new MemberVO(rs.getString(1), rs.getString(2), rs.getString(3),
+                    rs.getString(4), rs.getString(5), rs.getString(6),
+                    rs.getString(7), rs.getInt(8), rs.getString(9));
+            }
+        } finally {
+            closeAll(rs, pstmt, con);
+        }
+        return vo;
     }
     public void register(MemberVO vo) throws SQLException {
-        
+                
     }
+    
     public boolean idCheck(String id) throws SQLException {
         boolean result = false;
         Connection con = null;
@@ -97,10 +98,42 @@ public class MemberDAO {
         }
         return result;
     }
+    public void updateMemberInfo(MemberVO vo) throws SQLException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = DriverManager.getConnection(url, username, userpass);
+            StringBuilder sql = new StringBuilder("update mini_member set password=?, ");
+            sql.append("email=?, name=?, address=?, birthday=? where id=?");
+            pstmt = con.prepareStatement(sql.toString());
+            pstmt.setString(1, vo.getPassword());
+            pstmt.setString(2, vo.getEmail());
+            pstmt.setString(3, vo.getName());
+            pstmt.setString(4, vo.getAddress());
+            pstmt.setString(5, vo.getBirthday());
+            pstmt.setString(6, vo.getId());
+            pstmt.executeUpdate();
+        } finally {
+            closeAll(pstmt, con);
+        }
+    }
+    public boolean pwCheck(String pw) throws SQLException {
+        boolean result = false;
+        Connection con = null;
+        PreparedStatement pstmt =  null;
+        ResultSet rs = null;
+        try {
+            con = DriverManager.getConnection(url, username, userpass);
+            String sql = "select count(*) from mini_member where password = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, pw);
+            rs = pstmt.executeQuery();
+            if(rs.next() && rs.getInt(1) == 1) {
+                result = true;
+            }
+        }finally {
+            closeAll(rs, pstmt, con);
+        }
+        return result;    
+    }
 }
-
-
-
-
-
-
