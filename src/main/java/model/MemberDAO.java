@@ -76,7 +76,27 @@ public class MemberDAO {
     	return vo;
     }
     public void register(MemberVO vo) throws SQLException {
-                
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = DriverManager.getConnection(url, username, userpass);
+            StringBuilder sql = new StringBuilder("insert into mini_member");
+            sql.append("(id, email, password, name, address, ");
+            sql.append("birthday, regdate, question_no, answer) ");
+            sql.append("values(?, ?, ?, ?, ?, ?, sysdate, ?, ?)");
+            pstmt = con.prepareStatement(sql.toString());
+            pstmt.setString(1, vo.getId());
+            pstmt.setString(2, vo.getEmail());
+            pstmt.setString(3, vo.getPassword());
+            pstmt.setString(4, vo.getName());
+            pstmt.setString(5, vo.getAddress());
+            pstmt.setString(6, vo.getBirthday());
+            pstmt.setInt(7, vo.getQuestionNo());
+            pstmt.setString(8, vo.getAnswer());
+            pstmt.executeUpdate();
+        } finally {
+            closeAll(pstmt, con);
+        }
     }
     
     public boolean idCheck(String id) throws SQLException {
@@ -93,7 +113,7 @@ public class MemberDAO {
             if(rs.next() && rs.getInt(1) == 1) {
                 result = true;
             }
-        }finally {
+        } finally {
             closeAll(rs, pstmt, con);
         }
         return result;

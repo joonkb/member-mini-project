@@ -1,11 +1,16 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.MemberDAO;
+import model.MemberVO;
 
 /**
  * Servlet implementation class RegisterMemberServlet
@@ -14,16 +19,24 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    System.out.println("in register-member servlet");
 	    request.setCharacterEncoding("utf-8");
 	    String id = request.getParameter("id");
-	    String password = request.getParameter("password");
+	    String password = request.getParameter("pswd");
 	    String name = request.getParameter("name");
 	    String email = request.getParameter("email");
 	    String address = request.getParameter("address");
 	    String birthday = request.getParameter("birthday");
-	    String questionNo = request.getParameter("questionNo");
+	    int questionNo = Integer.parseInt(request.getParameter("questionNo"));
 	    String answer = request.getParameter("answer");
 	    
+	    MemberVO vo = new MemberVO(id, email, password, name, address, birthday, null, questionNo, answer);
+	    try {
+            MemberDAO.getInstance().register(vo);
+            response.sendRedirect("register-result.jsp");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	    
 	}
 

@@ -13,6 +13,7 @@ public class MemberVO {
 	public MemberVO() {
 		super();
 	}
+	
 	public MemberVO(String id, String email, String password, String name, String address, String birthday,
 			String regdate, int questionNo, String answer) {
 		super();
@@ -87,14 +88,3 @@ public class MemberVO {
 				+ ", answer=" + answer + "]";
 	}
 }
-/*
-	id varchar2(100) primary key,
-	email varchar2(100) not null, 
-	password varchar2(100) not null,
-	name varchar2(100) not null,
-	address varchar2(100) not null,
-	birthday date not null,
-	regdate date not null,
-	question_no number not null,
-	answer varchar2(100) not null,
-*/
