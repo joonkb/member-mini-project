@@ -53,4 +53,75 @@ public class MemberDAO {
             }
             return list;
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        public void register(MemberVO vo) throws SQLException {
+            
+        }
+        
+        
+        public boolean idCheck(String id) throws SQLException {
+            boolean result = false;
+            Connection con = null;
+            PreparedStatement pstmt =  null;
+            ResultSet rs = null;
+            try {
+                con = DriverManager.getConnection(url, username, userpass);
+                String sql = "select count(*) from mini_member where id = ?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, id);
+                rs = pstmt.executeQuery();
+                if(rs.next() && rs.getInt(1) == 1) {
+                    result = true;
+                }
+            }finally {
+                closeAll(rs, pstmt, con);
+            }
+            return result;
+        }
 }
