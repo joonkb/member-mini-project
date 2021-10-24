@@ -12,5 +12,8 @@ create table mini_member(
 
 insert into mini_member(id, email, password, name, address, birthday, regdate, question_no, answer)
     values('test','test@kst.com','0000','테스트','한국','1900-01-01',sysdate,'1','컴퓨터');
+insert into mini_member(id, email, password, name, address, birthday, regdate, question_no, answer)
+    values('test2','test2@kst.com','0000','테스트2','한국','1900-02-02',sysdate,'2','휴대폰');
+
 
 select * from mini_member;
