@@ -51,7 +51,7 @@
 						<td><%=memberList.get(i).getRegdate() %></td>
 					</tr>
 					<%} %>
-	   		    </tbody>
+				</tbody>
             </table>
         </div>
 	</body>
