@@ -15,5 +15,4 @@ insert into mini_member(id, email, password, name, address, birthday, regdate, q
 insert into mini_member(id, email, password, name, address, birthday, regdate, question_no, answer)
     values('test','test@kst.com','0000','테스트','한국','1900-01-01',sysdate,'1','컴퓨터');
 
-
 select * from mini_member;

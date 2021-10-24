@@ -59,7 +59,7 @@ public class MemberDAO {
     	PreparedStatement pstmt = null;
     	ResultSet rs = null;
     	try {
-    		con = DriverManager.getConnection(url, username, password);
+    		con = DriverManager.getConnection(url, username, userpass);
     		String sql = "select * from mini_member where id = ? and password = ?";
     		pstmt = con.prepareStatement(sql);
     		pstmt.setString(1, id);
