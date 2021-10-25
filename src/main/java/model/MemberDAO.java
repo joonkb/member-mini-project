@@ -156,4 +156,25 @@ public class MemberDAO {
         }
         return result;    
     }
+    public String findId(String email ,String name) throws SQLException {
+    	String id = null;
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs = null;
+    	try {
+    		System.out.println("name, email" +name +", "+ email);
+    		con = DriverManager.getConnection(url, username, userpass);
+    		String sql = "select id from mini_member where email =? and name=?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1, email);
+    		pstmt.setString(2, name);
+    		rs = pstmt.executeQuery();
+    		if(rs.next()) {
+    			id = rs.getString(1);
+    		}
+    	} finally {
+    		closeAll(pstmt, con);
+    	}
+    	return id;
+    }
 }
