@@ -11,28 +11,35 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style>
+    .container { padding-top: 200px; display: grid; place-content: center; }
+    .form-group { width: 300px;}
     .align-center {
        text-align: center;
     }
 </style>
+<script type="text/javascript">
+    function findIdByNameAndEmail(){
+        document.getElementById("findForm").submit();
+    }
+</script>
 </head>
 <body>
-    <div class="container pt-4">
+    <div class="container">
 	    <div class="card-body">
 		    <h3 class="card-title">아이디 찾기</h3>
-		    <form class="was-validated" action="FindIdServlet" method="post">
+		    <form class="was-validated" action="FindIdServlet" method="post" id="findForm">
                 <div class="form-group">
                     <label for="name">이름:</label> 
-                    <input type="text" class="form-control" id="name" placeholder="등록된 이름 입력" name="name" required="required" style="width:30%">
+                    <input type="text" class="form-control" id="name" placeholder="등록된 이름 입력" name="name" required="required" >
                 </div>
                 <div class="form-group">
                     <label for="email">이메일:</label> 
-                    <input type="email" class="form-control" id="email" placeholder="등록된 이메일 입력"  name="email" required="required" style="width:30%">
+                    <input type="email" class="form-control" id="email" placeholder="등록된 이메일 입력"  name="email" required="required" >
                 </div>
             </form>
 	    </div>
-	    <div class="card-footer align-center">
-	       <button class="btn btn-info">찾기</button>
+	    <div class="align-center">
+	       <a class="btn btn-info" onclick="findIdByNameAndEmail()">찾기</a>
 	       <a href="index.jsp" class="btn btn-danger">취소</a>
 	    </div>
     </div>

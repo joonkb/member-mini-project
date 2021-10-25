@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,16 +21,23 @@ public class FindIdServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String path = null;
-		String id = MemberDAO.getInstance().findId(name, email);
-		// 등록된 이메일과 이름이 존재한 경우 (회원)
-		if(id != null) {
-			request.setAttribute("memberId", id);
-			path = "findid-ok.jsp";
+		String id;
+		try {
+			id = MemberDAO.getInstance().findId(email, name);
+			System.out.println(id);
+			// 등록된 이메일과 이름이 존재한 경우 (회원)
+			if(id != null) {
+				System.out.println("id= " + id);
+				request.setAttribute("memberId", id);
+				path = "findid-ok.jsp";
+			}
+			// 존재하지 않는 회원인 경우
+			else {
+				path="findid-fail.jsp";
+			}
+			request.getRequestDispatcher(path).forward(request, response);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		// 존재하지 않는 회원인 경우
-		else {
-			path="findid-false.jsp";
-		}
-		response.sendRedirect(path);
 	}
 }
