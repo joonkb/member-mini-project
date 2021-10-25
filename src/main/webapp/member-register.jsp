@@ -36,6 +36,25 @@
             	    window.open("IdCheckServlet?id=" + memberId.value, "idcheckpopup", "width=250, height=150, top=150, left=400");
             	}
             }
+            
+            function passwordChanged() {
+                var strength = document.getElementById('strength');
+                var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+                var pwd = document.getElementById("pwd");
+                if (pwd.value.length == 0) {
+                    strength.innerHTML = 'Type Password';
+                } else if (false == enoughRegex.test(pwd.value)) {
+                    strength.innerHTML = 'More Characters';
+                } else if (strongRegex.test(pwd.value)) {
+                    strength.innerHTML = '<span style="color:green">Strong!</span>';
+                } else if (mediumRegex.test(pwd.value)) {
+                    strength.innerHTML = '<span style="color:orange">Medium!</span>';
+                } else {
+                    strength.innerHTML = '<span style="color:red">Weak!</span>';
+                }
+            }
         </script>
         <style type="text/css">
             .container { padding-top: 100px; display: grid; place-content: center; }
@@ -58,8 +77,13 @@
                 <button type="button" class="btn btn-primary" onclick="checkId()">중복확인</button><br><br>
                 <div class="form-group">
                     <label for="pwd">비밀번호:</label> 
-                    <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="pswd" required="required">
+                    <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="pswd" 
+                           size="15" maxlength="100" onkeyup="return passwordChanged()" required="required">
+                    <span id="strength">Type Password</span>
                 </div>
+                
+                <!-- <input name="password" id="password" type="text" size="15" maxlength="100" onkeyup="return passwordChanged();" /> -->
+
                 <div class="form-group">
                     <label for="confirmPwd">비밀번호확인:</label> 
                     <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required">
