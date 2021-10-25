@@ -156,4 +156,10 @@ public class MemberDAO {
         }
         return result;    
     }
+    public String findId(String email ,String name) {
+    	
+    	String id = null;
+    	
+    	return id;
+    }
 }
