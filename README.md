@@ -105,6 +105,8 @@
          - `idcheck-ok.jsp` (팝업)
          - `idcheck-fail.jsp` (팝업)
 
+### 리팩토링
+---
 
 
 
