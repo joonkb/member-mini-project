@@ -14,11 +14,10 @@
         @SuppressWarnings("unchecked")
         ArrayList<MemberVO> memberList = (ArrayList<MemberVO>)request.getAttribute("memberList");
 	    String currentUserId = null;// 현재 회원 아이디
-	    // 세션 정보가 없어서 현재 주석 처리
-        /* if(session.getAttribute("userInfo")!=null){// 로그인 상태
-            MemberVO userInfo = (MemberVO)session.getAttribute("userInfo");
+	    if (session.getAttribute("mvo") != null) {// 로그인 상태
+            MemberVO userInfo = (MemberVO)session.getAttribute("mvo");
             currentUserId = userInfo.getId();
-        } */
+        }
         %>
         <div>
             <a href="index.jsp">Home</a>
@@ -35,15 +34,15 @@
 					</tr>
 				</thead>
 				<tbody>
-				    <%for(int i=0; i<memberList.size() ;i++){ %>
+				    <%for(int i = 0; i < memberList.size(); i++){ %>
 					<tr>
 					    <%String memberId = memberList.get(i).getId();%>
-					    <!-- 세션 정보가 없어서 현재 주석 처리 --> 
-					    <%-- <%if(currentUserId.equals(memberId)){%>
+					    <%-- equals()에서 '=='로 수정 --%>
+					    <%if (currentUserId == memberId) {%>
                         <td><a href="update-form.jsp"><%=currentUserId%></a></td>
-                        <%}else{%> --%>
+                        <%} else {%>
 						<td><%=memberId %></td>
-						<%-- <%} %> --%>
+						<%} %>
 						<td><%=memberList.get(i).getName() %></td>
 						<td><%=memberList.get(i).getEmail() %></td>
 						<td><%=memberList.get(i).getAddress() %></td>
