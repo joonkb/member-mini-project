@@ -41,7 +41,7 @@
 	               <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="비밀번호" name="password">
 	               <button type="submit" class="btn btn-info">로그인</button>
 		           <a href="findid.jsp" class="btn btn-info">아이디찾기</a>
-		           <a href="findid.jsp" class="btn btn-info">비밀번호찾기</a>
+		           <a href="findpass.jsp" class="btn btn-info">비밀번호찾기</a>
 	           </form>
 	           <%
 		        } else {
