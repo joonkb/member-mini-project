@@ -25,7 +25,7 @@
 
 ### 👨‍👩‍👦‍👦구성원 및 구현 기능
 ---
-- `김병준` / [Joonkb](https://github.com/Joonkb/member-mini-project): 메인개발자 및 Project Manager <br>
+- `김병준` / [Joonkb](https://github.com/Joonkb): 메인개발자 및 Project Manager <br>
 - `이 용` / [nogy21](https://github.com/nogy21): 메인개발자 <br>
 - `김서연` / [westkitekim](https://github.com/westkitekim): 메인개발자 <br><br>
 
