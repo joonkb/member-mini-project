@@ -19,7 +19,6 @@ import model.MemberVO;
 public class RegisterMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    System.out.println("in register-member servlet");
 	    request.setCharacterEncoding("utf-8");
 	    String id = request.getParameter("id");
 	    String password = request.getParameter("pswd");
