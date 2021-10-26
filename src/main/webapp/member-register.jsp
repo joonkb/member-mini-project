@@ -27,6 +27,7 @@
             		return false;
             	}
             }
+            
             function checkId() {
             	let memberId = document.getElementById("id");
             	if(memberId.value == "") {
@@ -36,7 +37,13 @@
             	    window.open("IdCheckServlet?id=" + memberId.value, "idcheckpopup", "width=250, height=150, top=150, left=400");
             	}
             }
-            
+            /* function formOk() {
+            	if(checkId() != false) {
+            		alert("회원가입이 완료되었습니다. \n로그인 화면으로 돌아갑니다.");
+            		location.href = "index.jsp";
+            	}
+            	
+            } */
             function passwordChanged() {
                 var strength = document.getElementById('strength');
                 var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
@@ -57,7 +64,7 @@
             }
         </script>
         <style type="text/css">
-            .container { padding-top: 100px; display: grid; place-content: center; }
+            .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
             .form-group { width: 300px;}
         </style>
     </head>                            
@@ -66,59 +73,67 @@
         String[] question = {"나의 보물1호는?", "어린 시절 가장 좋아했던 장소는?", "가장 좋아하는 영화는?"};
         %>
         <div class="container">
-            <h2>회원가입</h2><br><hr><br>
-            <form action="RegisterMemberServlet" method="post" onsubmit="return checkForm()">
-                <input type="hidden" id="flag" value="">
-                <div class="form-group">
-                    <label for="id">아이디:</label> 
-                    <input type="text" class="form-control" id="id" placeholder="아이디" name="id" required="required">
-                    <%-- style="width: 30%" --%>
-                </div>
-                <button type="button" class="btn btn-primary" onclick="checkId()">중복확인</button><br><br>
-                <div class="form-group">
-                    <label for="pwd">비밀번호:</label> 
-                    <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="pswd" 
-                           size="15" maxlength="100" onkeyup="return passwordChanged()" required="required">
-                    <span id="strength">Type Password</span>
-                </div>
-                
-                <!-- <input name="password" id="password" type="text" size="15" maxlength="100" onkeyup="return passwordChanged();" /> -->
-
-                <div class="form-group">
-                    <label for="confirmPwd">비밀번호확인:</label> 
-                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="name">이름:</label> 
-                    <input type="text" class="form-control" placeholder="이름" name="name" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일:</label> 
-                    <input type="text" class="form-control" placeholder="이메일주소" name="email" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="address">주소:</label> 
-                    <input type="text" class="form-control" placeholder="주소" name="address" required="required">
-                </div>
-                <div class="form-group">
-                    <label for="birthday">생년월일:</label> 
-                    <input type="date" class="form-control" placeholder="생년월일" name="birthday" required="required">
-                </div>
-                <div class="row-fluid">
-                    <label for="question">보안 질문에 답하세요:</label><br>
-                    <select class="selectpicker" name="questionNo" required="required" data-width="auto">
-                        <option value="">선택하세요</option>
-                            <% for(int i = 0; i < question.length; i++)  { %> 
-                            <option value="<%=i%>"><%=question[i] %></option>
-                            <% } %>
-                    </select>
-                </div><br>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="answer" placeholder="답" name="answer" required="required">
-                </div>
-                <button type="submit" class="btn btn-primary">가입하기</button><br><br>
+        <div class="card">
+            <div class="card-header">
+            <h2>회원가입</h2>
+            </div>
+	            <div class="card-body">
+	            <form action="RegisterMemberServlet" method="post" onsubmit="return checkForm()">
+	                <input type="hidden" id="flag" value="">
+	                <div class="form-group">
+	                    <label for="id">아이디:</label> 
+	                    <input type="text" class="form-control" id="id" placeholder="아이디" name="id" required="required">
+	                    <%-- style="width: 30%" --%>
+	                </div>
+	                <button type="button" class="btn btn-primary" onclick="checkId()">중복확인</button><br><br>
+	                <div class="form-group">
+	                    <label for="pwd">비밀번호:</label> 
+	                    <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="pswd" 
+	                           size="15" maxlength="100" onkeyup="return passwordChanged()" required="required">
+	                    <span id="strength">Type Password</span>
+	                </div>
+	                
+	                <!-- <input name="password" id="password" type="text" size="15" maxlength="100" onkeyup="return passwordChanged();" /> -->
+	
+	                <div class="form-group">
+	                    <label for="confirmPwd">비밀번호확인:</label> 
+	                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required">
+	                </div>
+	                <div class="form-group">
+	                    <label for="name">이름:</label> 
+	                    <input type="text" class="form-control" placeholder="이름" name="name" required="required">
+	                </div>
+	                <div class="form-group">
+	                    <label for="email">이메일:</label> 
+	                    <input type="text" class="form-control" placeholder="이메일주소" name="email" required="required">
+	                </div>
+	                <div class="form-group">
+	                    <label for="address">주소:</label> 
+	                    <input type="text" class="form-control" placeholder="주소" name="address" required="required">
+	                </div>
+	                <div class="form-group">
+	                    <label for="birthday">생년월일:</label> 
+	                    <input type="date" class="form-control" placeholder="생년월일" name="birthday" required="required">
+	                </div>
+	                <div class="row-fluid">
+	                    <label for="question">보안 질문에 답하세요:</label><br>
+	                    <select class="selectpicker" name="questionNo" required="required" data-width="auto">
+	                        <option value="">선택하세요</option>
+	                            <% for(int i = 0; i < question.length; i++)  { %> 
+	                            <option value="<%=i%>"><%=question[i] %></option>
+	                            <% } %>
+	                    </select>
+	                </div><br>
+	                <div class="form-group">
+	                    <input type="text" class="form-control" id="answer" placeholder="답" name="answer" required="required">
+	                </div>
+             <div class="card-footer">
+                <button type="submit" class="btn btn-success">가입하기</button><br><br>
             </form>
-        </div>
+            </div>
+            </div><!-- card body -->
+        </div><!-- card class -->
+        </div><!--container class-->
     </body>
 </html>
 
