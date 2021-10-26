@@ -23,7 +23,7 @@
 - `eclipse`
 - `github`
 
-### 구성원 및 구현 기능
+### 👨‍👩‍👦‍👦구성원 및 구현 기능
 ---
 - `김병준` / [Joonkb](https://github.com/Joonkb/member-mini-project): 메인개발자 및 Project Manager <br>
 - `이 용` / [nogy21](https://github.com/nogy21): 메인개발자 <br>
@@ -104,9 +104,23 @@
          - `register-result.jsp`
          - `idcheck-ok.jsp` (팝업)
          - `idcheck-fail.jsp` (팝업)
+<br>
 
 ### 리팩토링
----
+--- 
+🌈 1차 구현 완료 후 현재를 기준으로 새롭게 배운 것들을 적용하여 점증적으로 리팩토링 해나갈 예정입니다.
+
+1. Front Controller Design Pattern
+2. Singleton Design Pattern
+3. DBCP
+4. EL, JSTL
+5. CSS(bootstrap) 통합
+
+
+
+
+
+
 
 
 
