@@ -124,7 +124,7 @@ public class MemberDAO {
         try {
             con = DriverManager.getConnection(url, username, userpass);
             StringBuilder sql = new StringBuilder("update mini_member set password=?, ");
-            sql.append("email=?, name=?, address=?, birthday=? where id=?");
+            sql.append("email=?, name=?, address=?, birthday=to_date(?,'YYYY-MM-DD') where id=?");
             pstmt = con.prepareStatement(sql.toString());
             pstmt.setString(1, vo.getPassword());
             pstmt.setString(2, vo.getEmail());
