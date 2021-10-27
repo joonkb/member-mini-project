@@ -57,6 +57,7 @@
 
 
 ### ⚒️트러블 슈팅
+---
 
 <details>
 <summary>표 펼치기/접기</summary>
@@ -71,7 +72,7 @@
 </div>
 </details>      
 
-### UseCase Diagram
+### 📐개발 프로세스 및 설계
 ---
 <details>
 <summary>💶Usecase Diagram</summary>
