@@ -24,9 +24,9 @@ public class PwCheckServlet extends HttpServlet {
 	    try {
             boolean result = MemberDAO.getInstance().pwCheck(pw);
             if (result) {
-                path = "update-form.jsp";
+                path = "pw-check-ok.jsp";
             } else {
-                path = "pw-check.jsp";
+                path = "pw-check-fail.jsp";
             }
             response.sendRedirect(path);
         } catch (SQLException e) {
