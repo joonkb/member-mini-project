@@ -49,6 +49,7 @@
                   <%-- 
                         로그인 했을경우 로그아웃 버튼 제공
                         추후에 버튼 위치 조정할 예정
+                        absolute / position 설정하기;
                    --%>
 	                  <%=vo.getId() %> 님 안녕하세요
 	                   <form action="LogoutServlet" method="post" id="logoutForm"></form>  

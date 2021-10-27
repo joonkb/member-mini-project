@@ -27,7 +27,6 @@ public class FindIdServlet extends HttpServlet {
 			System.out.println(id);
 			// 등록된 이메일과 이름이 존재한 경우 (회원)
 			if(id != null) {
-				System.out.println("id= " + id);
 				request.setAttribute("memberId", id);
 				path = "findid-ok.jsp";
 			}
