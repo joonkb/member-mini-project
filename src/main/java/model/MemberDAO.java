@@ -177,4 +177,24 @@ public class MemberDAO {
     	}
     	return id;
     }
+    public String findPassword(String memberId, String question_no, String answer) throws SQLException {
+    	String password = null;
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs= null;
+    	try {
+    		con = DriverManager.getConnection(url, username, userpass);
+    		System.out.println("id, no, answer="+memberId+", "+question_no+", " + answer);
+    		String sql = "select password from mini_member where id =? and question_no=? and answer=?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1, memberId);
+    		pstmt.setString(2, question_no);
+    		pstmt.setString(3, answer);
+    		rs = pstmt.executeQuery();
+    		if(rs.next()) password = rs.getString(1);
+    	} finally {
+    		closeAll(rs, pstmt, con);
+    	}
+    	return password;
+    }
 }

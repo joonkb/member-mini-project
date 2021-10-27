@@ -41,7 +41,7 @@
 	               <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="비밀번호" name="password">
 	               <button type="submit" class="btn btn-info">로그인</button>
 		           <a href="findid.jsp" class="btn btn-info">아이디찾기</a>
-		           <a href="findid.jsp" class="btn btn-info">비밀번호찾기</a>
+		           <a href="findpass.jsp" class="btn btn-info">비밀번호찾기</a>
 	           </form>
 	           <%
 		        } else {
@@ -50,7 +50,7 @@
                         로그인 했을경우 로그아웃 버튼 제공
                         추후에 버튼 위치 조정할 예정
                    --%>
-	                   ${sessionScope.vo.id} 님 안녕하세요
+	                  <%=vo.getId() %> 님 안녕하세요
 	                   <form action="LogoutServlet" method="post" id="logoutForm"></form>  
 	                   <a href="#" class="btn btn-danger" onclick="logout()">로그아웃</a>
 	           <%
@@ -62,6 +62,10 @@
 		       <br>
 		       <br>
 		       <br>
+		       <br>
+               <br>
+               <br>
+               <br>
                <br>
                <br>
 		       <br>
