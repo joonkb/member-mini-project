@@ -58,9 +58,17 @@
 
 ### UseCase Diagram
 ---
+<details>
+<summary>💶Usecase Diagram</summary>
+<div markdown="1">
 
 ![member-usecase-diagram](https://user-images.githubusercontent.com/88620416/138929408-5bf72317-fd8a-4762-8f78-2fcf084c2db6.png)
 
+</div>
+</details>
+  
+  
+  
 <br>
 
 ### 파일리스트 
