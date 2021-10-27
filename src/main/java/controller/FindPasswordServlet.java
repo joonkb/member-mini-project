@@ -17,12 +17,15 @@ import model.MemberDAO;
 @WebServlet("/FindPasswordServlet")
 public class FindPasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String path = null;
 		String memberId = request.getParameter("memberId");
 		String question_no = request.getParameter("questionNo");
 		String answer  = request.getParameter("question");
+		System.out.println(answer);
 		try {
 			String password = MemberDAO.getInstance().findPassword(memberId, question_no, answer);
+			System.out.println("password: " + password);
 			if(password != null) {
 				request.setAttribute("password", password);
 				path = "findpass-ok.jsp";
