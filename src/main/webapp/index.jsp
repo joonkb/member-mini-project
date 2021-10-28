@@ -64,7 +64,7 @@
 		    <div class="card-footer align-center">
 			    <a href="member-register.jsp" class="btn btn-success">회원가입</a>
 	            <a href="AllMemberListServlet" class="btn btn-info">회원조회</a>
-			    <a href='#' onclick="window.open('pw-check.jsp','mypopup','width=650,height=450,top=350,left=400'); return false;">
+			    <a href='#' class='btn btn-info' onclick="window.open('pw-check.jsp','mypopup','width=650,height=450,top=350,left=400'); return false;">
 			    회원정보수정
 			    </a>
 		    </div>    

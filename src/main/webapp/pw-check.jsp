@@ -1,3 +1,4 @@
+<%@page import="model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,8 +9,9 @@
 </head>
 <body>
 <div class="container">
+    <% MemberVO vo = (MemberVO) session.getAttribute("mvo"); %>
     <script type="text/javascript">
-        if (sessionStorage.getItem("test") == null) {
+        if (<%=vo %> == null) {
             alert("로그인을 먼저 해주세요!");
             self.close();
         }
