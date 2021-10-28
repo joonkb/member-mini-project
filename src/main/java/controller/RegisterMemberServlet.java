@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.MemberDAO;
 import model.MemberVO;
@@ -32,7 +33,11 @@ public class RegisterMemberServlet extends HttpServlet {
 	    MemberVO vo = new MemberVO(id, email, password, name, address, birthday, null, questionNo, answer);
 	    try {
             MemberDAO.getInstance().register(vo);
-            response.sendRedirect("register-result.jsp");
+            //if 추가해야함
+            MemberVO mvo = MemberDAO.getInstance().login(id, password);
+            HttpSession session = request.getSession();
+            session.setAttribute("mvo", mvo);
+            response.sendRedirect("index.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }
