@@ -35,8 +35,8 @@
 	                <input type="text" class="form-control mb-2 mr-sm-2" id="id" placeholder="아이디" name="id">
 	                <label for="password" class="mb-2 mr-sm-2">비밀번호:</label>
 	                <input type="password" class="form-control mb-2 mr-sm-2" id="password" placeholder="비밀번호" name="password">
-	                <button type="submit" class="btn btn-info">로그인</button>
-		            <a href="findid.jsp" class="btn btn-info">아이디찾기</a>
+	                <button type="submit" class="btn btn-info">로그인</button>&nbsp;
+		            <a href="findid.jsp" class="btn btn-info">아이디찾기</a>&nbsp;
 		            <a href="findid.jsp" class="btn btn-info">비밀번호찾기</a>
 	            </form>
 	            <% } else { %>
