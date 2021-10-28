@@ -46,20 +46,6 @@
 	</script>
 </head>
 <body>
-    <%-- <%
-    // 테스트용 데이터
-    MemberVO testvo = new MemberVO(); 
-    testvo.setId("test3");
-    testvo.setEmail("test@email.com");
-    testvo.setPassword("a");
-    testvo.setName("테스트삼");
-    testvo.setAddress("오리");
-    testvo.setBirthday("3333-03-03");
-    testvo.setQuestionNo(3);
-    testvo.setAnswer("삼");
-    testvo.setRegdate("2021-10-24");
-    session.setAttribute("mvo", testvo);
-    %> --%>
     <div class = "container">
         <a href="index.jsp">Home</a><hr>
         <%

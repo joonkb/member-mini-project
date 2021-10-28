@@ -33,5 +33,4 @@ public class PwCheckServlet extends HttpServlet {
             e.printStackTrace();
         }
 	}
-
 }
