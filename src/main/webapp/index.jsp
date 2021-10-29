@@ -25,6 +25,7 @@
 <body>
 <%
     MemberVO vo = (MemberVO) session.getAttribute("mvo");
+    //MemberVO regVo = (MemberVO) session.getAttribute("mvo2");
 %>
 	<div class="container pt-5">
 	   <h3>홈페이지</h3>

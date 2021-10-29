@@ -33,10 +33,13 @@ public class RegisterMemberServlet extends HttpServlet {
 	    MemberVO vo = new MemberVO(id, email, password, name, address, birthday, null, questionNo, answer);
 	    try {
             MemberDAO.getInstance().register(vo);
+            System.out.println("1. DAO insert OK");
             //if 추가해야함
             MemberVO mvo = MemberDAO.getInstance().login(id, password);
+            System.out.println("2. login method OK");
             HttpSession session = request.getSession();
             session.setAttribute("mvo", mvo);
+            System.out.println("3. mvo2 session.setAttribute OK");
             response.sendRedirect("index.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
