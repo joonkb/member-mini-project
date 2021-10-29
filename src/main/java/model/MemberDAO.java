@@ -100,7 +100,6 @@ public class MemberDAO {
             closeAll(pstmt, con);
         }
     }
-    
     public boolean idCheck(String id) throws SQLException {
         boolean result = false;
         Connection con = null;

@@ -23,7 +23,7 @@
 	</script>
 </head>
 <body>
-    <% MemberVO vo = (MemberVO) session.getAttribute("mvo"); %>
+  <% MemberVO vo = (MemberVO) session.getAttribute("mvo"); %>
 	<div class="container pt-5">
 	    <h3>홈페이지</h3>
 	    <div class="card">
