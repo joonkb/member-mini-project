@@ -51,7 +51,7 @@
                         로그인 했을경우 로그아웃 버튼 제공
                         추후에 버튼 위치 조정할 예정
                    --%>
-	                   ${sessionScope.vo.id} 님 안녕하세요
+	                   ${sessionScope.mvo.id} 님 안녕하세요
 	                   <form action="LogoutServlet" method="post" id="logoutForm"></form>  
 	                   <a href="#" class="btn btn-danger" onclick="logout()">로그아웃</a>
 	           <%
