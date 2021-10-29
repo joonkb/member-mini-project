@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%=request.getParameter("q")%>
+    <script type="text/javascript">
+        alert("비밀번호가 잘못되었습니다");
+        location.href="pw-check.jsp";
+    </script>
 </body>
 </html>

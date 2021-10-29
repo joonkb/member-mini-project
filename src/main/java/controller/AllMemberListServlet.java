@@ -16,8 +16,8 @@ import model.MemberVO;
 /**
  * Servlet implementation class FindMemberListServlet
  */
-@WebServlet("/FindMemberListServlet")
-public class FindMemberListServlet extends HttpServlet {
+@WebServlet("/AllMemberListServlet")
+public class AllMemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

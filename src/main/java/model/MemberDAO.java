@@ -60,8 +60,10 @@ public class MemberDAO {
     	ResultSet rs = null;
     	try {
     		con = DriverManager.getConnection(url, username, userpass);
-    		String sql = "select * from mini_member where id = ? and password = ?";
-    		pstmt = con.prepareStatement(sql);
+    		StringBuilder sql = new StringBuilder("select id,email,password,name,address, ");
+    		sql.append("to_char(birthday,'YYYY-MM-DD'), to_char(regdate,'YYYY-MM-DD'), ");
+    		sql.append("question_no, answer from mini_member where id = ? and password = ?");
+    		pstmt = con.prepareStatement(sql.toString());
     		pstmt.setString(1, id);
     		pstmt.setString(2, password);
     		rs = pstmt.executeQuery();
@@ -123,7 +125,7 @@ public class MemberDAO {
         try {
             con = DriverManager.getConnection(url, username, userpass);
             StringBuilder sql = new StringBuilder("update mini_member set password=?, ");
-            sql.append("email=?, name=?, address=?, birthday=? where id=?");
+            sql.append("email=?, name=?, address=?, birthday=to_date(?,'YYYY-MM-DD') where id=?");
             pstmt = con.prepareStatement(sql.toString());
             pstmt.setString(1, vo.getPassword());
             pstmt.setString(2, vo.getEmail());
@@ -136,18 +138,19 @@ public class MemberDAO {
             closeAll(pstmt, con);
         }
     }
-    public boolean pwCheck(String pw) throws SQLException {
+    public boolean pwCheck(String id, String pw) throws SQLException {
         boolean result = false;
         Connection con = null;
         PreparedStatement pstmt =  null;
         ResultSet rs = null;
         try {
             con = DriverManager.getConnection(url, username, userpass);
-            String sql = "select count(*) from mini_member where password = ?";
+            String sql = "select count(*) from mini_member where id = ? and password = ?";
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, pw);
+            pstmt.setString(1, id);
+            pstmt.setString(2, pw);
             rs = pstmt.executeQuery();
-            if(rs.next() && rs.getInt(1) == 1) {
+            if(rs.next()) {
                 result = true;
             }
         }finally {
@@ -175,5 +178,25 @@ public class MemberDAO {
     		closeAll(pstmt, con);
     	}
     	return id;
+    }
+    public String findPassword(String memberId, String question_no, String answer) throws SQLException {
+    	String password = null;
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs= null;
+    	try {
+    		con = DriverManager.getConnection(url, username, userpass);
+    		System.out.println("id, no, answer="+memberId+", "+question_no+", " + answer);
+    		String sql = "select password from mini_member where id =? and question_no=? and answer=?";
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1, memberId);
+    		pstmt.setString(2, question_no);
+    		pstmt.setString(3, answer);
+    		rs = pstmt.executeQuery();
+    		if(rs.next()) password = rs.getString(1);
+    	} finally {
+    		closeAll(rs, pstmt, con);
+    	}
+    	return password;
     }
 }
