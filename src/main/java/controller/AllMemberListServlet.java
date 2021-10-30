@@ -24,7 +24,7 @@ public class AllMemberListServlet extends HttpServlet {
         try {
             ArrayList<MemberVO> memberList = MemberDAO.getInstance().findMemberList();
             request.setAttribute("memberList", memberList);
-            request.getRequestDispatcher("findmemberlist-result.jsp").forward(request, response);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }
