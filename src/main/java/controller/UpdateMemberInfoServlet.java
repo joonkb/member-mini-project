@@ -25,11 +25,13 @@ public class UpdateMemberInfoServlet extends HttpServlet {
 	    request.setCharacterEncoding("utf-8");
 	    try {
 	        MemberVO vo = new MemberVO();
+	        vo.setId(request.getParameter("id"));
 	        vo.setPassword(request.getParameter("new_pwd"));
 	        vo.setName(request.getParameter("name"));
 	        vo.setEmail(request.getParameter("email"));
 	        vo.setAddress(request.getParameter("address"));
 	        vo.setBirthday(request.getParameter("birthday"));
+	        vo.setRegdate(request.getParameter("regdate"));
 	        vo.setQuestionNo(Integer.parseInt(request.getParameter("questionNo")));
 	        vo.setAnswer(request.getParameter("answer"));
             MemberDAO.getInstance().updateMemberInfo(vo);

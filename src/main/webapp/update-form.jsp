@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/i18n/defaults-*.min.js"></script>
+	<style type="text/css">
+        .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
+        .form-group { width: 300px;}
+    </style>
 	<title>회원정보수정</title>
 	<script type="text/javascript">
 	    function checkPw(){
@@ -57,7 +61,7 @@
         <form action="UpdateMemberInfoServlet" method="post" onsubmit="return checkPw()">
             <div class="form-group">
                 <label for="id">아이디:</label> 
-                <input type="text" class="form-control" id="id" placeholder="<%=vo.getId() %>" name="id" readonly="readonly" style="width: 30%">
+                <input type="text" class="form-control" value="<%=vo.getId() %>" name="id" readonly="readonly">
             </div>
             <div class="form-group">
                 <label for="pwd">비밀번호:</label> 
@@ -71,23 +75,23 @@
             </div>
             <div class="form-group">
                 <label for="name">이름:</label> 
-                <input type="text" class="form-control" id="name" value="<%=vo.getName() %>" name="name" required="required">
+                <input type="text" class="form-control" value="<%=vo.getName() %>" name="name" required="required">
             </div>
             <div class="form-group">
                 <label for="email">이메일:</label> 
-                <input type="text" class="form-control" id="email" value="<%=vo.getEmail() %>" name="email" required="required">
+                <input type="text" class="form-control" value="<%=vo.getEmail() %>" name="email" required="required">
             </div>
             <div class="form-group">
                 <label for="address">주소:</label> 
-                <input type="text" class="form-control" id="address" value="<%=vo.getAddress() %>" name="address" required="required">
+                <input type="text" class="form-control" value="<%=vo.getAddress() %>" name="address" required="required">
             </div>
             <div class="form-group">
-                <label for="birthday">생년월일:</label> <%=vo.getBirthday() %>
-                <input type="date" class="form-control" id="birthday" placeholder="<%=vo.getBirthday() %>" name="birthday" required="required" max="2100-12-31">
+                <label for="birthday">생년월일:</label>
+                <input type="date" class="form-control" value="<%=vo.getBirthday() %>" name="birthday" required="required" max="2100-12-31">
             </div>
             <div class="form-group">
                 <label for="regdate">가입일:</label> 
-                <input type="date" class="form-control" id="regdate" value="<%=vo.getRegdate() %>" name="regdate" readonly="readonly">
+                <input type="date" class="form-control" value="<%=vo.getRegdate() %>" name="regdate" readonly="readonly">
             </div>
             <div class="row-fluid">
                 <label for="question">보안 질문에 답하세요:</label><br>
@@ -99,7 +103,7 @@
                 </select>
             </div><br>
             <div class="form-group">
-                <input type="text" class="form-control" id="answer" value="<%=vo.getAnswer() %>" name="answer" required="required">
+                <input type="text" class="form-control" value="<%=vo.getAnswer() %>" name="answer" required="required">
             </div>
             <button class="btn btn-primary">수정하기</button><br><br>
         </form>
