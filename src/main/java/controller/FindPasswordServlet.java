@@ -16,7 +16,9 @@ import model.MemberDAO;
  */
 @WebServlet("/FindPasswordServlet")
 public class FindPasswordServlet extends HttpServlet {
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private static final long serialVersionUID = -6972658214051531827L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String path = null;
 		String memberId = request.getParameter("memberId");
