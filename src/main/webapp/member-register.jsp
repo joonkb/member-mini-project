@@ -12,10 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <!-- Latest compiled and minified CSS 보안질문 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
-        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/i18n/defaults-*.min.js"></script>
         <script type="text/javascript">
             function checkForm() {
             	if(document.getElementById("pwd").value != document.getElementById("confirmPwd").value) {
@@ -48,10 +45,16 @@
             } 
             
             function passwordChanged() {
+            	/*
+            	정규식 원본 코드
+            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+            	*/
                 var strength = document.getElementById('strength');
-                var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-                var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-                var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
                 var pwd = document.getElementById("pwd");
                 if (pwd.value.length == 0) {
                     strength.innerHTML = 'Type Password';
@@ -101,7 +104,9 @@
 		
 		                <div class="form-group">
 		                    <label for="confirmPwd">비밀번호확인:</label> 
-		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required">
+		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required"
+		                           size="15" maxlength="100" onkeyup="return passwordChanged()" >
+		                    <span id="strength">Type Password</span>
 		                </div>
 		                <div class="form-group">
 		                    <label for="name">이름:</label> 
