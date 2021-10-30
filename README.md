@@ -66,7 +66,7 @@
 | 이슈 내용                                                    | 해결 방안                                                    |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | `findmemberlist-result.jsp`에서 회원 리스트 정보 중 현재 회원 아이디와 일치하는 아이디가 있는지 확인하는 과정에서 `NullPointerException` 발생 | 스트링 타입의 변수를 선언하였기에 `equals()` 메서드를 사용하여 일치 여부 판단을 시도. 그런데 직후 `NullPointerException`이 발생했고, 동등연산자 `==`을 활용하여 비교를 시도하니 정상적인 작동을 확인|
-| | |
+| 아이디 찾기 기능 구현 중 FindIdServlet에서 `request.setAttribute("memberId", id);` 를 통해서 request 객체에 찾은 id값을 설정해주었고 `response.sendRedirect(path)` 방식을 통해서 `findid-ok`에서 출력을 하였으나 id 값이 정상적으로 출력되지 않음 | 이는 `forward` 방식으로 데이터를 `findid-ok`로 넘겨야 새로운 `request`, `response`가 아닌 기존의  `request`, `response` 객체를 이용해 설정한 값들을 넘겨 받을 수 있음|
   
   
 </div>
