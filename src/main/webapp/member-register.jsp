@@ -49,9 +49,9 @@
                 if(pswd.value.length == 0) { //')' token error duplicate, syntax error 발생지점
                     match.innerHTML = 'Type Password';
                 } else if (pwd.value ==  pswd.value) {
-                    match.innerHTML = 'password Matched!';
+                    match.innerHTML = '<span style="color:green">password Matched!</span>';
                 } else {
-                    match.innerHTML = 'discord with password';
+                    match.innerHTML = '<span style="color:red">discord with password</span>';
                 }
             }
             function passwordChanged() {
