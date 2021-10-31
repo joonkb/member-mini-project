@@ -5,18 +5,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/i18n/defaults-*.min.js"></script>
-    <style type="text/css">
-        .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
-        .form-group { width: 300px;}
-        .update-home { text-align: center; }
-    </style>
+    <jsp:include page="css/bootstrap-w3c.jsp"></jsp:include>
+    <jsp:include page="css/bootstrap-selection.jsp"></jsp:include>
+    <link rel="stylesheet" href="css/styles.css">
     <title>회원정보 수정 결과</title>
 </head>
 <body>
@@ -40,7 +31,7 @@
             <div class="card-body">
                 <div class="row">
 	                <div>
-                        <table class="table table-hover table-bordered" align="center">
+                        <table class="table table-hover table-bordered">
 	                        <thead align="center">
 	                            <tr>
 	                                <th>아이디</th>
@@ -80,7 +71,7 @@
 	            </div>
 	            <%} %>
             </div>
-            <div class="card-footer update-home">
+            <div class="card-footer align-center">
                 <button type="button" onclick="location.href='index.jsp'" class="btn btn-info">Home</button>
             </div>
         </div>

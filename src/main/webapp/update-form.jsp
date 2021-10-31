@@ -5,17 +5,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/bootstrap-select.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta2/dist/js/i18n/defaults-*.min.js"></script>
-	<style type="text/css">
-        .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
-        .form-group { width: 300px;}
-    </style>
+    <jsp:include page="css/bootstrap-w3c.jsp"></jsp:include>
+    <jsp:include page="css/bootstrap-selection.jsp"></jsp:include>
+    <link rel="stylesheet" href="css/styles.css">
 	<title>회원정보수정</title>
 	<script type="text/javascript">
 	    function checkPw(){
@@ -57,7 +49,7 @@
         String[] question = {"나의 보물1호는?", "어린 시절 가장 좋아했던 장소는?", "가장 좋아하는 영화는?"};
         if (vo != null) {
         %>
-        <h2>회원정보수정</h2><br><hr><br>
+        <h2>회원정보수정</h2><br><hr>
         <form action="UpdateMemberInfoServlet" method="post" onsubmit="return checkPw()">
             <div class="form-group">
                 <label for="id">아이디:</label> 
