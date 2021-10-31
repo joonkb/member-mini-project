@@ -7,16 +7,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<style>
-	    .align-center {
-		   text-align: center;
-		}
-	</style>
+	<jsp:include page="css/bootstrap-w3c.jsp"></jsp:include>
+    <link rel="stylesheet" href="css/styles.css">
 	<script type="text/javascript">
 	    function logout(){
 	        document.getElementById("logoutForm").submit();
@@ -51,9 +43,15 @@
                     추후에 버튼 위치 조정할 예정
                     absolute / position 설정하기;
                 --%>
-	                <%=vo.getId() %> 님 안녕하세요
-                    <form action="LogoutServlet" method="post" id="logoutForm"></form>  
-                    <a href="#" class="btn btn-danger" onclick="logout()">로그아웃</a>
+                    <div class="row" id="card-header-login">
+	                    <div class="col-sm-6 offset-sm-3" id="home-name">
+			                <%=vo.getId() %> 님 안녕하세요
+		                </div>
+		                <div class="col-sm-3">
+		                    <form action="LogoutServlet" method="post" id="logoutForm"></form>  
+		                    <a href="#" class="btn btn-danger" id="btn-logout" onclick="logout()">로그아웃</a>
+	                    </div>
+                    </div>
 	            <% } %>
     		    </div>
 	            <div class="card-body">
