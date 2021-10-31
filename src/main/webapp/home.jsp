@@ -76,9 +76,9 @@
 			                    <th>가입일</th>
 			                </tr>
 			            </thead>
-			            <tbody class="align-center">
+			            <tbody>
 			                <%for(int i = 0; i < memberList.size(); i++){ %>
-			                <tr>
+			                <tr class="align-center">
 			                    <%String memberId = memberList.get(i).getId();%>
 			                    <%-- equals()에서 '=='로 수정 --%>
 			                    <%if (currentUserId == memberId) {%>
@@ -88,9 +88,9 @@
 			                    <%} %>
 			                    <td class="col-sm-1"><%=memberList.get(i).getName() %></td>
 			                    <td class="col-sm-2"><%=memberList.get(i).getEmail() %></td>
-			                    <td class="col-sm-3"><%=memberList.get(i).getAddress() %></td>
+			                    <td class="col-sm-4"><%=memberList.get(i).getAddress() %></td>
 			                    <td class="col-sm-2"><%=memberList.get(i).getBirthday().split(" ")[0] %></td>
-			                    <td><%=memberList.get(i).getRegdate().split(" ")[0] %></td>
+			                    <td class="col-sm-2"><%=memberList.get(i).getRegdate().split(" ")[0] %></td>
 			                </tr>
 			                <%} %>
 			            </tbody>
