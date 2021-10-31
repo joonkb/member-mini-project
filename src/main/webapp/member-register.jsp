@@ -24,7 +24,6 @@
             		return false;
             	}
             }
-            
             function checkId() {
             	let memberId = document.getElementById("id");
             	if(memberId.value == "") {
@@ -43,14 +42,19 @@
                     document.getElementById("form").submit();
             	}
             } 
-            
+            function passwordMatch() {
+                var match = document.getElementById('passMatch');
+                var pswd = document.getElementById("confirmPwd");
+                var pwd = document.getElementById("pwd");
+                if(pswd.value.length == 0) { //')' token error duplicate, syntax error 발생지점
+                    match.innerHTML = 'Type Password';
+                } else if (pwd.value ==  pswd.value) {
+                    match.innerHTML = 'password Matched!';
+                } else {
+                    match.innerHTML = 'discord with password';
+                }
+            }
             function passwordChanged() {
-            	/*
-            	정규식 원본 코드
-            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-            	*/
                 var strength = document.getElementById('strength');
             	var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
                 var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
@@ -68,19 +72,6 @@
                     strength.innerHTML = '<span style="color:red">Weak!</span>';
                 }
             }
-            /*
-            fuction passwordMatch() {
-                var match = document.getElementById('passMatch');
-            	var pswd = document.getElementById("confirmPwd");
-            	if(pswd.value.length == 0) {
-            		match.innerHTML = 'Type Password';
-            	} else if (pwd.value ==  passMatch.value)) {
-            		match.innerHTML = 'password Matched!';
-            	} else {
-            		match.innerHTML = 'discord with password';
-            	}
-            }
-            */
         </script>
         <style type="text/css">
             .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
@@ -155,7 +146,6 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success" onclick="formSubmit()">가입하기</button><br><br>
                 </div>
-           
         </div><!-- card class -->
         </div><!--container class-->
     </body>
