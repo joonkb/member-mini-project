@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.container {
+	padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; 
+}
+
+.form-group {
+	width: 300px;
+}
+
+.align-center {
+    text-align: center;
+}
+#card-header-login{
+	display: flex;
+}
+#home-name{
+	text-align: right;
+	margin:auto;
+}
+/* 
+findid.jsp, findid-fail.jsp, findpass.jsp
+.container { padding-top: 200px; display: grid; place-content: center; } 
+*/
