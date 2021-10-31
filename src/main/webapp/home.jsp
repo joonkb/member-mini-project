@@ -67,7 +67,7 @@
 				    %>
 			        <table class="table table-hover">
 			            <thead>
-			                <tr>
+			                <tr class="align-center">
 			                    <th>아이디</th>
 			                    <th>이름</th>
 			                    <th>이메일</th>
@@ -78,19 +78,19 @@
 			            </thead>
 			            <tbody>
 			                <%for(int i = 0; i < memberList.size(); i++){ %>
-			                <tr>
+			                <tr class="align-center">
 			                    <%String memberId = memberList.get(i).getId();%>
 			                    <%-- equals()에서 '=='로 수정 --%>
 			                    <%if (currentUserId == memberId) {%>
-			                        <td><a href="update-form.jsp"><%=currentUserId%></a></td>
+			                        <td class="col-sm-1"><a href="update-form.jsp"><%=currentUserId%></a></td>
 			                    <%} else {%>
-			                        <td><%=memberId %></td>
+			                        <td class="col-sm-1"><%=memberId %></td>
 			                    <%} %>
-			                    <td><%=memberList.get(i).getName() %></td>
-			                    <td><%=memberList.get(i).getEmail() %></td>
-			                    <td><%=memberList.get(i).getAddress() %></td>
-			                    <td><%=memberList.get(i).getBirthday() %></td>
-			                    <td><%=memberList.get(i).getRegdate() %></td>
+			                    <td class="col-sm-1"><%=memberList.get(i).getName() %></td>
+			                    <td class="col-sm-2"><%=memberList.get(i).getEmail() %></td>
+			                    <td class="col-sm-4"><%=memberList.get(i).getAddress() %></td>
+			                    <td class="col-sm-2"><%=memberList.get(i).getBirthday().split(" ")[0] %></td>
+			                    <td class="col-sm-2"><%=memberList.get(i).getRegdate().split(" ")[0] %></td>
 			                </tr>
 			                <%} %>
 			            </tbody>

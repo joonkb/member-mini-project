@@ -19,7 +19,6 @@
             		return false;
             	}
             }
-            
             function checkId() {
             	let memberId = document.getElementById("id");
             	if(memberId.value == "") {
@@ -38,17 +37,22 @@
                     document.getElementById("form").submit();
             	}
             } 
-            
+            function passwordMatch() {
+                var match = document.getElementById('passMatch');
+                var pswd = document.getElementById("confirmPwd");
+                var pwd = document.getElementById("pwd");
+                if(pswd.value.length == 0) { //')' token error duplicate, syntax error 발생지점
+                    match.innerHTML = 'Type Password';
+                } else if (pwd.value ==  pswd.value) {
+                    match.innerHTML = 'password Matched!';
+                } else {
+                    match.innerHTML = 'discord with password';
+                }
+            }
             function passwordChanged() {
-            	/*
-            	정규식 원본 코드
-            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-                var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-            	*/
                 var strength = document.getElementById('strength');
-            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            	var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
                 var enoughRegex = new RegExp("(?=.{6,}).*", "g");
                 var pwd = document.getElementById("pwd");
                 if (pwd.value.length == 0) {
@@ -95,9 +99,9 @@
 		
 		                <div class="form-group">
 		                    <label for="confirmPwd">비밀번호확인:</label> 
-		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required"
-		                           size="15" maxlength="100" onkeyup="return passwordChanged()" >
-		                    <span id="strength">Type Password</span>
+		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd"
+		                           size="15" maxlength="100" onkeyup="return passwordMatch()"  required="required">
+		                    <span id="passMatch">Type Password</span>
 		                </div>
 		                <div class="form-group">
 		                    <label for="name">이름:</label> 
@@ -133,7 +137,6 @@
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success" onclick="formSubmit()">가입하기</button><br><br>
                 </div>
-           
         </div><!-- card class -->
         </div><!--container class-->
     </body>
