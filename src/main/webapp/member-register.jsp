@@ -52,8 +52,8 @@
                 var enoughRegex = new RegExp("(?=.{6,}).*", "g");
             	*/
                 var strength = document.getElementById('strength');
-            	var strongRegex = new RegExp("^(?=.{10,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            	var strongRegex = new RegExp("^(?=.{8,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).*$", "g");
+                var mediumRegex = new RegExp("^(?=.{8,})(((?=.*[a-zA-Z])(?=.*[0-9]))|((?=.*[a-zA-Z])(?=.*[0-9]))).*$", "g");
                 var enoughRegex = new RegExp("(?=.{6,}).*", "g");
                 var pwd = document.getElementById("pwd");
                 if (pwd.value.length == 0) {
@@ -68,6 +68,19 @@
                     strength.innerHTML = '<span style="color:red">Weak!</span>';
                 }
             }
+            /*
+            fuction passwordMatch() {
+                var match = document.getElementById('passMatch');
+            	var pswd = document.getElementById("confirmPwd");
+            	if(pswd.value.length == 0) {
+            		match.innerHTML = 'Type Password';
+            	} else if (pwd.value ==  passMatch.value)) {
+            		match.innerHTML = 'password Matched!';
+            	} else {
+            		match.innerHTML = 'discord with password';
+            	}
+            }
+            */
         </script>
         <style type="text/css">
             .container { padding-top: 100px; padding-bottom: 100px; display: grid; place-content: center; }
@@ -104,9 +117,9 @@
 		
 		                <div class="form-group">
 		                    <label for="confirmPwd">비밀번호확인:</label> 
-		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd" required="required"
-		                           size="15" maxlength="100" onkeyup="return passwordChanged()" >
-		                    <span id="strength">Type Password</span>
+		                    <input type="password" class="form-control" id="confirmPwd" placeholder="비밀번호확인" name="confirmPswd"
+		                           size="15" maxlength="100" onkeyup="return passwordMatch()"  required="required">
+		                    <span id="passMatch">Type Password</span>
 		                </div>
 		                <div class="form-group">
 		                    <label for="name">이름:</label> 
