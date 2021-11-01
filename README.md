@@ -67,6 +67,7 @@
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | `findmemberlist-result.jsp`에서 회원 리스트 정보 중 현재 회원 아이디와 일치하는 아이디가 있는지 확인하는 과정에서 `NullPointerException` 발생 | 스트링 타입의 변수를 선언하였기에 `equals()` 메서드를 사용하여 일치 여부 판단을 시도. 그런데 직후 `NullPointerException`이 발생했고, 동등연산자 `==`을 활용하여 비교를 시도하니 정상적인 작동을 확인. 이후 의문이 남아 다시 `equals()` 사용하여 판별하니 정상 작동하여 보다 `==`에서 `equals()`로 재수정|
 | 아이디 찾기 기능 구현 중 FindIdServlet에서 `request.setAttribute("memberId", id);` 를 통해서 request 객체에 찾은 id값을 설정해주었고 `response.sendRedirect(path)` 방식을 통해서 `findid-ok`에서 출력을 하였으나 id 값이 정상적으로 출력되지 않음 | 이는 `forward` 방식으로 데이터를 `findid-ok`로 넘겨야 새로운 `request`, `response`가 아닌 기존의  `request`, `response` 객체를 이용해 설정한 값들을 넘겨 받을 수 있음|
+|회원가입폼`member-register.jsp`에서 비밀번호와 비밀번호확인 속성값의 일치를 알려주는 `passwordMatch()` function 을 js로 구현하였으나 function을 추가하면 비밀번호 보안강도 `passwordChanged()` 와 일치여부 확인 `passwordMatched()` 모두 작동하지 않는 문제 발생. <br>`passwordMatched()` 을 실행하지 않으면 비밀번호 보안강도는 정상적으로 수행.<br>`passwordMatched()`가 원인인 것을 인지하고 function의 위치도 변경해보았으나 동일 | 원인은 `passwordMatched()` 에`)`가 추가로 작성된 오타의 문제였음을 확인. 오타 수정 후 2개의 function 모두 정상적으로 수행. 절차적으로 코드가 수행되기 때문에 js에서 문제발생 시 전반적인 코드 수행이 안된다는 것을 알게되었음|
   
   
 </div>
