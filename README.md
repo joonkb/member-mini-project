@@ -139,7 +139,7 @@
 2. Singleton Design Pattern
 3. DBCP
 4. EL, JSTL
-5. CSS(bootstrap) 통합
+5. <s>CSS(bootstrap) 통합<s>
 
 
 
